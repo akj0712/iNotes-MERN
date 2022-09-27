@@ -39,64 +39,33 @@ const NoteState = (props) => {
       date: "2022-09-26T18:51:48.444Z",
       __v: 0,
     },
-    {
-      _id: "6331f4c4c8a156663be42f64",
-      user: "632fd3d00c390804776c7aed",
-      title: "Abhinav",
-      description: "Abhinav is a good boy",
-      tag: "personal",
-      date: "2022-09-26T18:51:48.444Z",
-      __v: 0,
-    },
-    {
-      _id: "6331f4c4c8a156663be42f65",
-      user: "632fd3d00c390804776c7aed",
-      title: "Abhinav",
-      description: "Abhinav is a good boy",
-      tag: "personal",
-      date: "2022-09-26T18:51:48.444Z",
-      __v: 0,
-    },
-    {
-      _id: "6331f4c4c8a156663be42f66",
-      user: "632fd3d00c390804776c7aed",
-      title: "Abhinav",
-      description: "Abhinav is a good boy",
-      tag: "personal",
-      date: "2022-09-26T18:51:48.444Z",
-      __v: 0,
-    },
-    {
-      _id: "6331f4c4c8a156663be42f67",
-      user: "632fd3d00c390804776c7aed",
-      title: "Abhinav",
-      description: "Abhinav is a good boy",
-      tag: "personal",
-      date: "2022-09-26T18:51:48.444Z",
-      __v: 0,
-    },
-    {
-      _id: "6331f4c4c8a156663be42f68",
-      user: "632fd3d00c390804776c7aed",
-      title: "Abhinav",
-      description: "Abhinav is a good boy",
-      tag: "personal",
-      date: "2022-09-26T18:51:48.444Z",
-      __v: 0,
-    },
-    {
-      _id: "6331f4c4c8a156663be42f69",
-      user: "632fd3d00c390804776c7aed",
-      title: "Abhinav",
-      description: "Abhinav is a good boy",
-      tag: "personal",
-      date: "2022-09-26T18:51:48.444Z",
-      __v: 0,
-    },
   ];
   const [notes, setNotes] = useState(notesInitial);
+
+  // ** Add a note
+  const addNote = (title, description, tag) => {
+    // TODO: API CALL
+    console.log("adding a new note");
+    const note = {
+      _id: "6331f4c4c8a156663be4f",
+      user: "632fd3d00c390804776c7aed",
+      title: title,
+      description: description,
+      tag: tag,
+      date: "2022-09-26T18:51:48.444Z",
+      __v: 0,
+    };
+    setNotes(notes.concat(note));
+  };
+
+  // ** Delete a note
+  const deleteNote = () => {};
+
+  // ** Edit a note
+  const editNote = () => {};
+
   return (
-    <NoteContext.Provider value={{ notes, setNotes }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
       {props.children}
     </NoteContext.Provider>
   );
