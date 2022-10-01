@@ -9,13 +9,21 @@ function NoteItem(props) {
     <div className="col-md-3">
       <div className="card  my-3">
         <div className="card-body">
+          <span
+            className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-info text-dark"
+            style={{
+              zIndex: 10,
+            }}
+          >
+            {note.tag}
+            <span className="visually-hidden">unread messages</span>
+          </span>
           <h5 className="card-title">{note.title}</h5>
           <p className="card-text">{note.description}</p>
           <i
             className="fa-regular fa-trash-can mx-2"
             onClick={() => {
               deleteNote(note._id);
-
               props.showAlert("Deleted successfully", "success");
             }}
           ></i>
