@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let history = useNavigate();
 
@@ -18,13 +18,14 @@ const Login = () => {
       }),
     });
     const json = await response.json();
-    console.log(json);
+    // console.log(json);
     if (json.success) {
       // save the authtoken and redirect
       localStorage.setItem("token", json.authtoken);
       history("/");
+      props.showAlert("Loged in successfully!", "success");
     } else {
-      alert("invalid credentials");
+      props.showAlert("Invalid Credentials", "danger");
     }
   };
 
@@ -34,7 +35,7 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="my-3">
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email address
